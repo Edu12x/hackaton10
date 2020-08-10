@@ -75,6 +75,9 @@ function Ejercicio5() {
   let num5 = parseInt(prompt("Ingrese el 2do numero"));
   let oprdr = prompt("Ingrese el operador");
 
+
+  //HACERLO CON SWITCH
+
   function operacion(a, b, c) {
     let message = "";
     try {
