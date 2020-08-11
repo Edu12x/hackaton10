@@ -123,15 +123,43 @@ function charIndex(a, b) {
 console.log(charIndex("hello", "l"));
 console.log(charIndex("circumlocution", "c"));
 
-
 //Ejercicio 10 Escriba una función que convierta un objeto en una matriz, donde cada elemento representa un par
-//clave-valor 
+//clave-valor
+
+function ToArray(coleccion5 = {}) {
+  return Object.entries(coleccion5);
+}
+
+console.log(ToArray({ a: 1, b: 2 }));
+
+/*
+//Ejercicio 11 
+
+11. Cree la función que toma una matriz con objetos y devuelve la suma de los presupuestos de las personas.
+getBudgets([
+{ name: "John", age: 21, budget: 23000 },
+{ name: "Steve", age: 32, budget: 40000 },
+{ name: "Martin", age: 16, budget: 2700 }
+
+*/
+
+function getBudgets(coleccion6 = []) {
+  return coleccion6.map((obj) => obj.budget).reduce((a, b) => a + b, 0);
+}
+
+console.log(
+  getBudgets([
+    { name: "John", age: 21, budget: 23000 },
+    { name: "Steve", age: 32, budget: 40000 },
+    { name: "Martin", age: 16, budget: 2700 },
+  ])
+);
 
 /*12. Cree una función que tome una matriz de estudiantes y devuelva una matriz de nombres de estudiantes.
 getStudentNames([
 { name: "Steve" },
 { name: "Mike" },
-{ name: "John" }
+{ name: "John" }    
 ]) ➞ ["Becky", "John", "Steve"]*/
 
 let students = [{ name: "Steve" }, { name: "Mike" }, { name: "John" }];
@@ -154,21 +182,14 @@ dislikes: 3,
 followers: 10
 }) ➞ [["likes", 2], ["dislikes", 3], ["followers", 10]]*/
 
-let like = {
+function objectToArray(coleccion7 = []) {
+  console.log(Object.entries(coleccion7));
+}
+objectToArray({
   likes: 2,
   dislikes: 3,
   followers: 10,
-};
-
-let likes = [];
-for (const key in like) {
-  likes = likes.concat(key).concat(like[key]);
-}
-
-function objectToArray() {
-  console.log(Object.entries(like));
-}
-objectToArray();
+});
 
 /*14 Cree una función donde, dado el número n, devuelva la suma de todos los números cuadrados incluyendo n.
 squaresSum(3) ➞ 14
@@ -193,3 +214,64 @@ function multiplyByLength(colecction = []) {
 }
 
 multiplyByLength([2, 3, 1, 0, 3, 4, 5, 2]);
+
+/*16 cree una funcion que toma un numero como argumento y devuelva una maitriz de numeros contando desde este numero
+a 0* countdown(5) -> [5,4,3,2,1,0]*/
+
+function countdown(coleccion7) {
+  let countdown2 = [];
+  for (let i = 0; i <= coleccion7; i = i + 1) {
+    countdown2 = countdown2.concat(i);
+  }
+  return countdown2.reverse();
+}
+
+console.log(countdown(5));
+
+/*17 cree una funcion que toma una matriz y devuelva la diferencia entre los numeros mas grandes y mas pequeños
+diffMaxMin([10,4,1,4,-10,-50,32,21]) //Smallest number is -50, biggest is 32 */
+
+function diffMaxMin(coleccion8 = []) {
+  let MaxMin = [];
+  MaxMin = [Math.min(...coleccion8), Math.max(...coleccion8)];
+  console.log(MaxMin.reduce((a, b) => b - a, 0));
+  console.log(`Smallest number is ${MaxMin[0]}, biggest is ${MaxMin[1]}`);
+}
+diffMaxMin([10, 4, 1, 4, -10, -50, 32, 21]);
+
+/*18 Cree una función que filtre las cadenas de una matriz y devuelva una nueva matriz que solo contenga enteros.
+filterList([1, 2, 3, "x", "y", 10]) ➞ [1, 2, 3, 10] */
+
+function filterList(coleccion9 = []) {
+  fList = [];
+  coleccion9.forEach(function (e) {
+    if (typeof e == "number") {
+      fList = fList.concat(e);
+    }
+  });
+  return fList;
+}
+
+console.log(filterList([1, 2, 3, "x", "y", 10]));
+
+/*19. Cree una función que tome dos argumentos (elemento, tiempos). El primer argumento (elemento) es el elemento que necesita repetirse, mientras que el segundo argumento (veces) es la cantidad de veces que se debe repetir el elemento. Devuelve el resultado en una matriz.
+repeat(13, 5) ➞ [13, 13, 13, 13, 13] */
+
+function repeat(a, b) {
+  rpt = [];
+  for (i = 1; i <= b; i = i + 1) {
+    rpt = rpt.concat(a);
+  }
+  return rpt;
+}
+
+console.log(repeat(13, 5));
+
+/*20. Escriba una función, .vreplace () que extienda el prototipo de cadena reemplazando todas las vocales en una cadena con una vocal especificada.
+"apples and bananas".vreplace("u") ➞ "upplus und bununus"*/
+
+function vreplace(a, b) {
+  return a.replace(/[aeiou]/g, b);
+}
+
+console.log(vreplace("apples and bananas", "e"));
