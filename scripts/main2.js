@@ -275,3 +275,36 @@ function vreplace(a, b) {
 }
 
 console.log(vreplace("apples and bananas", "e"));
+
+/* 21. Te dan una cadena de palabras. Debe encontrar la palabra "Nemo" y devolver una cadena como esta: "¡Encontré a Nemo en [el orden de la palabra que encuentra nemo]!".
+findNemo("I am finding Nemo !") ➞ "I found Nemo at 4!" */
+
+function findNemo(a, b) {
+  let stn = [];
+  a.split(" ").forEach(function (element, e) {
+    if (element == b) {
+      stn = stn.concat(e + 1);
+    }
+  });
+  return `i found ${b} at ${stn} !`;
+}
+
+console.log(findNemo("I am finding Nemo !", "Nemo"));
+
+/* 22. Cree una función que capitalice la última letra de cada palabra.
+capLast("hello") ➞ "hellO" */
+
+function capLast(a) {
+  let word = "";
+  let lastletter = "";
+  a.split("").forEach(function (element, e) {
+    if (e + 1 == a.split("").length) {
+      lastletter = lastletter.concat(element);
+    } else {
+      word = word.concat(element);
+    }
+  });
+  return `${word}${lastletter.toUpperCase()}`;
+}
+
+console.log(capLast("hello"));
